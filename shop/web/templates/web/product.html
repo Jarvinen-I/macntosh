@@ -1,0 +1,77 @@
+{% extends 'web/main.html' %}
+{% load static %}
+{% block title_page %}
+<title>Страница товара</title>
+{% endblock title_page %}
+
+{% block content %}
+<h2></h2>
+<h6></h6>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            {% for image_item in one_product.productimage_set.all %}
+                <div class="product-image-item">
+                    <img src="{{ image_item.image.url }}" class="img-responsive">
+                </div>
+
+            {% endfor %}
+        </div>
+        <div class="col-lg-6">
+            <h2 class="product-page">
+                {{one_product.name}}
+            </h2>
+            <div>
+                <h4>Цена: {{ one_product.price }} руб</h4>
+            </div>
+            <div>
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#description" aria-controls="home" role="tab" data-toggle="tab">
+                                Описание
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#delivery" aria-controls="profile" role="tab" data-toggle="tab">
+                                Доставка
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content product-description-tabs">
+                      <div role="tabpanel" class="tab-pane active" id="description">
+                          {{ one_product.description }}
+                          <div>
+                                <form id="form_buying_product" class="form-inline" action="{% url 'basket_adding' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" name="number" id="number">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" id="submit_btn" class="btn btn-success btn-buy"
+                                                data-product_id = "{{ one_product.id }}"
+                                                data-name = "{{ one_product.name }}"
+                                                data-price = "{{ one_product.price }}">
+                                            Купить</button>
+                                    </div>
+                                </form>
+                            </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane" id="delivery">
+                          <h4>Для осуществления доставки</h4>
+                          <p>Выберите товары, перейдите в корзину и заполните поля "Имя" и "Телефон".<br>
+                          С вами свяжутся для обсуждения удобного времени доставки.</p>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
