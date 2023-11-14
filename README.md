@@ -15,3 +15,5 @@
   
 Сообщения об успешной отправке данных не реализованы.
   
+![733887473](https://github.com/Jarvinen-I/macntosh/assets/121432966/63bb07be-d553-4d2a-9562-e7bc54ba7833)
+![733887681](https://github.com/Jarvinen-I/macntosh/assets/121432966/5d88c862-bf01-44ec-bd1f-2d8a9fb431de)
